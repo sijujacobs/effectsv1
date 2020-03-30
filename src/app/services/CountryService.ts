@@ -5,7 +5,7 @@ import { ICountry } from "../models/Country";
 import { map, catchError } from "rxjs/operators";
 @Injectable({ providedIn: "root" })
 export class CountryService {
-  baseURL: string = "https://restcountries.eu/rest/v2/na3me/";
+  baseURL: string = "https://restcountries.eu/rest/v2/name/";
 
   constructor(private http: HttpClient) {}
 
