@@ -2,17 +2,21 @@ import { Action } from "@ngrx/store";
 import * as ActionTypes from "../actions/action.types";
 import { ICountry } from "src/app/models/Country";
 
-export class LoadDataBegin implements Action {
+export class LoadDataBeginAction implements Action {
   readonly type = ActionTypes.LOAD_DATA_BEGIN;
+  constructor(public payload: string) {}
 }
 
-export class LoadDataSuccess implements Action {
+export class LoadDataSuccessAction implements Action {
   readonly type = ActionTypes.LOAD_DATA_SUCCESS;
   constructor(public payload: ICountry[]) {}
 }
-export class LoadDataFailure implements Action {
+export class LoadDataFailureAction implements Action {
   readonly type = ActionTypes.LOAD_DATA_FAILURE;
   constructor(public payload: { error: any }) {}
 }
 
-export type CountryAction = LoadDataBegin | LoadDataSuccess | LoadDataFailure;
+export type CountryActions =
+  | LoadDataBeginAction
+  | LoadDataSuccessAction
+  | LoadDataFailureAction;

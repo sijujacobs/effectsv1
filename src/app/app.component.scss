@@ -1,0 +1,24 @@
+.loading {
+  box-shadow: 20px 20px 0px pink !important;
+}
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner:before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 5px solid #ccc;
+  border-top-color: rgb(250, 5, 242);
+  animation: spinner 1.3s linear infinite;
+}

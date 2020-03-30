@@ -1,5 +1,7 @@
 <div>
   <h3>Angular 9 with ngrx Effects</h3>
+  <div [class.spinner]="loading$ | async"></div>
+  <h2>{{ (error$ | async)?.message }}</h2>
   <ul>
     <li *ngFor="let country of countries$ | async">
       <h2 scope="row">{{ country.name }}</h2>

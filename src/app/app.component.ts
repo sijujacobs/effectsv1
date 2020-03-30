@@ -4,7 +4,7 @@ import { ICountry } from "./models/Country";
 import { Observable } from "rxjs";
 import { Store } from "@ngrx/store";
 import { AppState } from "./models/AppState";
-import { LoadDataBegin } from "./store/actions/country.actions";
+import { LoadDataBeginAction } from "./store/actions/country.actions";
 
 @Component({
   selector: "app-root",
@@ -15,13 +15,19 @@ export class AppComponent implements OnInit {
   title = "effectsv1";
 
   countries$: Observable<ICountry[]>;
+  loading$: Observable<Boolean>;
+  error$: Observable<Error>;
   constructor(private store: Store<AppState>) {}
+  // constructor(private service: CountryService) {}
 
   ngOnInit() {
-    console.log("---------AppComp :: ngOnInit ---------------");
     // this.countries$ = this.service.getCountries("amer"); //Without ngStore
     // this.countries$ = this.store.select(store => store.countries);// With ngStore
+
     this.countries$ = this.store.select(store => store.country.countries);
-    this.store.dispatch(new LoadDataBegin());
+    this.loading$ = this.store.select(store => store.country.loading);
+    this.error$ = this.store.select(store => store.country.error);
+
+    this.store.dispatch(new LoadDataBeginAction("amer"));
   }
 }

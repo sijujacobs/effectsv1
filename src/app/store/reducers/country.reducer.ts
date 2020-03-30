@@ -1,6 +1,6 @@
 import { ICountry } from "src/app/models/Country";
 import * as actionTypes from "../actions/action.types";
-import { CountryAction } from "../actions/country.actions";
+import { CountryActions } from "../actions/country.actions";
 import { State } from "@ngrx/store";
 import { CountryState } from "../../models/CountryState";
 
@@ -18,9 +18,9 @@ const initialState: CountryState = {
 
 export function CountryReducer(
   state: CountryState = initialState,
-  action: CountryAction
+  action: CountryActions
 ) {
-  console.log("---------Reducer ------------ActionType - ", action.type);
+  console.log("---------Reducer ------------ActionType - ", action);
   switch (action.type) {
     case actionTypes.LOAD_DATA_BEGIN: {
       return {
